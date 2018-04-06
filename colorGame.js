@@ -16,16 +16,16 @@ easyBtn.addEventListener("click", function() {
 	hardBtn.classList.remove("selected");
 	numSquares = 3;
 	colors = generateColor(numSquares);
-    pickedColor = pickColor();
-    colorDisplay.textContent = pickedColor;
-    for (var i = 0; i < squares.length; i++) {
-    	if(colors[i]) {
-    		squares[i].style.backgroundColor = colors[i];
-    	}
-    	else {
-    		squares[i].style.display = "none";
-    	}
-    }
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+	for (var i = 0; i < squares.length; i++) {
+		if(colors[i]) {
+			squares[i].style.backgroundColor = colors[i];
+		}
+		else {
+			squares[i].style.display = "none";
+		}
+	}
 });
 
 hardBtn.addEventListener("click", function() {
@@ -33,12 +33,12 @@ hardBtn.addEventListener("click", function() {
 	easyBtn.classList.remove("selected");
 	numSquares = 6;
 	colors = generateColor(numSquares);
-    pickedColor = pickColor();
+	pickedColor = pickColor();
 	colorDisplay.textContent = pickedColor;
 	for (var i = 0; i < squares.length; i++) {
-        squares[i].style.backgroundColor = colors[i];
-       	squares[i].style.display = "block";
-    }
+		squares[i].style.backgroundColor = colors[i];
+		squares[i].style.display = "block";
+	}
 });
 
 for (var i = 0; i < squares.length; i++) {
@@ -47,17 +47,17 @@ for (var i = 0; i < squares.length; i++) {
 	// 添加每个方块的事件
 	squares[i].addEventListener("click", function() {
 		var selectedColor = this.style.backgroundColor;
-        if(selectedColor === pickedColor) {
-        	messageDisplay.textContent = "Correct";
-        	// 传递当前颜色作为参数，实现把当前点击的颜色代替所有颜色块的颜色
-        	changeColors(selectedColor);
-        	h1.style.backgroundColor = selectedColor;
-        	resetButton.textContent="Play Again?";
-        }
-        else {
-        	this.style.backgroundColor = "#232323";
-        	messageDisplay.textContent = "Try Again";
-        }
+		if(selectedColor === pickedColor) {
+			messageDisplay.textContent = "Correct";
+			// 传递当前颜色作为参数，实现把当前点击的颜色代替所有颜色块的颜色
+			changeColors(selectedColor);
+			h1.style.backgroundColor = selectedColor;
+			resetButton.textContent="Play Again?";
+		}
+		else {
+			this.style.backgroundColor = "#232323";
+			messageDisplay.textContent = "Try Again";
+		}
 	});
 }
 
@@ -94,12 +94,12 @@ function pickColor() {
 
 resetButton.addEventListener("click", function() {
 	colors = generateColor(numSquares);
-    pickedColor = pickColor();
-    colorDisplay.textContent = pickedColor;
-    for (var i = 0; i < squares.length; i++) {
-    	squares[i].style.backgroundColor = colors[i];
-    }
-    h1.style.backgroundColor = "#232323";
-    resetButton.textContent = "New Colors";
-    messageDisplay.textContent = "";
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].style.backgroundColor = colors[i];
+	}
+	h1.style.backgroundColor = "#232323";
+	resetButton.textContent = "New Colors";
+	messageDisplay.textContent = "";
 });
