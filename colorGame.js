@@ -17,14 +17,14 @@ easyBtn.addEventListener("click", function() {
 	numSquares = 3;
 	colors = generateColor(numSquares);
     pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-	for (var i = 0; i < squares.length; i++) {
-        if(colors[i]) {
-    	    squares[i].style.backgroundColor = colors[i];
-     	}
-   	    else {
-   		    squares[i].style.display = "none";
-   	    }
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+    	if(colors[i]) {
+    		squares[i].style.backgroundColor = colors[i];
+    	}
+    	else {
+    		squares[i].style.display = "none";
+    	}
     }
 });
 
@@ -37,7 +37,7 @@ hardBtn.addEventListener("click", function() {
 	colorDisplay.textContent = pickedColor;
 	for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
-   	    squares[i].style.display = "block";
+       	squares[i].style.display = "block";
     }
 });
 
@@ -96,7 +96,7 @@ resetButton.addEventListener("click", function() {
 	colors = generateColor(numSquares);
     pickedColor = pickColor();
     colorDisplay.textContent = pickedColor;
-    for (var i = 0; i < colors.length; i++) {
+    for (var i = 0; i < squares.length; i++) {
     	squares[i].style.backgroundColor = colors[i];
     }
     h1.style.backgroundColor = "#232323";
