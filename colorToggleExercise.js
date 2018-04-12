@@ -4,8 +4,8 @@ var button = document.querySelector("button");
   button.addEventListener("click", function(){
    	if(isPurple){
   		document.body.style.background = "white";
-  	} 
-    else {
+  	}
+	else {
   		document.body.style.background = "purple";
   	}
   	isPurple = !isPurple;
@@ -13,5 +13,5 @@ var button = document.querySelector("button");
 */
 
 button.addEventListener("click", function(){
-	document.body.classList.toggle("purple");
+	document.body.classList.toggle("purple"); // 掌握toggle的妙处
 });
