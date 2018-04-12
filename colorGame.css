@@ -1,5 +1,5 @@
 body {
-	background-color: #232323;
+	background-color: #232323; // background和background-color功能有区别，也有重合
 }
 
 .square {
@@ -13,7 +13,7 @@ body {
 
 #container {
 	width: 700px;
-	margin: 0 auto; /*左右自动指定边距*/
+	margin: 0 auto; // 如果用两个参数，第一个代表上下，第二个代表左右
 }
 
 h1 {
