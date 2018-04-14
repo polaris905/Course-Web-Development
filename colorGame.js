@@ -1,64 +1,70 @@
 var numSquares = 6;
-var colors = generateColor(numSquares);
+var colors = [];
+var pickedColor;
 var squares = document.querySelectorAll(".square");
 var colorDisplay = document.getElementById("colorDisplay");
-var pickedColor = pickColor();
 var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
-var easyBtn = document.querySelector("#easyBtn");
-var hardBtn = document.querySelector("#hardBtn");
+var modeButtons = document.querySelectorAll(".mode");
 
-colorDisplay.textContent = colors[1];
+init();
 
-easyBtn.addEventListener("click", function() {
-	easyBtn.classList.add("selected");
-	hardBtn.classList.remove("selected");
-	numSquares = 3;
+function init() {
+	setupModeButtons();
+	setupSquares();
+	reset();
+}
+
+function setupModeButtons() {
+	for (var i = 0; i < modeButtons.length; i++) {
+		modeButtons[i].addEventListener("click", function() {
+			modeButtons[0].classList.remove("selected");
+			modeButtons[1].classList.remove("selected");
+			this.classList.add("selected");
+			this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+			reset();
+		});
+	}
+}
+
+function setupSquares() {
+	for (var i = 0; i < squares.length; i++) {
+		// 添加每个方块的事件
+		squares[i].addEventListener("click", function() {
+			var selectedColor = this.style.backgroundColor;
+			if(selectedColor === pickedColor) {
+				messageDisplay.textContent = "Correct";
+				// 传递当前颜色作为参数，实现把当前点击的颜色代替所有颜色块的颜色
+				changeColors(selectedColor);
+				h1.style.backgroundColor = selectedColor;
+				resetButton.textContent="Play Again?";
+			}
+			else {
+				this.style.backgroundColor = "#232323";
+				messageDisplay.textContent = "Try Again";
+			}
+		});
+	}
+}
+
+function reset() {
 	colors = generateColor(numSquares);
 	pickedColor = pickColor();
 	colorDisplay.textContent = pickedColor;
 	for (var i = 0; i < squares.length; i++) {
 		if(colors[i]) {
+			squares[i].style.display = "block";
+			// 初始化每个方块颜色
 			squares[i].style.backgroundColor = colors[i];
 		}
 		else {
 			squares[i].style.display = "none";
 		}
 	}
-});
-
-hardBtn.addEventListener("click", function() {
-	hardBtn.classList.add("selected");
-	easyBtn.classList.remove("selected");
-	numSquares = 6;
-	colors = generateColor(numSquares);
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-	for (var i = 0; i < squares.length; i++) {
-		squares[i].style.backgroundColor = colors[i];
-		squares[i].style.display = "block";
-	}
-});
-
-for (var i = 0; i < squares.length; i++) {
-	// 初始化每个方块颜色
-	squares[i].style.backgroundColor = colors[i];
-	// 添加每个方块的事件
-	squares[i].addEventListener("click", function() {
-		var selectedColor = this.style.backgroundColor;
-		if(selectedColor === pickedColor) {
-			messageDisplay.textContent = "Correct";
-			// 传递当前颜色作为参数，实现把当前点击的颜色代替所有颜色块的颜色
-			changeColors(selectedColor);
-			h1.style.backgroundColor = selectedColor;
-			resetButton.textContent="Play Again?";
-		}
-		else {
-			this.style.backgroundColor = "#232323";
-			messageDisplay.textContent = "Try Again";
-		}
-	});
+	h1.style.backgroundColor = "steelblue";
+	resetButton.textContent = "New Colors";
+	messageDisplay.textContent = "";
 }
 
 // 用参数的颜色代替squares数组中所有元素的颜色
@@ -93,13 +99,5 @@ function pickColor() {
 }
 
 resetButton.addEventListener("click", function() {
-	colors = generateColor(numSquares);
-	pickedColor = pickColor();
-	colorDisplay.textContent = pickedColor;
-	for (var i = 0; i < squares.length; i++) {
-		squares[i].style.backgroundColor = colors[i];
-	}
-	h1.style.backgroundColor = "#232323";
-	resetButton.textContent = "New Colors";
-	messageDisplay.textContent = "";
+	reset();
 });
