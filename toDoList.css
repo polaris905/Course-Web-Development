@@ -1,1 +1,83 @@
+body {
+	font-family: Roboto;
+	/*下面的背景颜色是在uigradients.com里面复制的代码*/
+	background: #3494E6;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+h1 {
+	background: #2980b9;
+	color: white;
+	margin: 0;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: normal;
+}
+
+ul {
+	list-style: none; /*去掉li前面的圆点*/
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	background: #fff;
+	height: 40px;
+	line-height: 40px; /*设置li里面的文字内容可以占据的高度*/
+	color: #666;
+}
+
+li:nth-child(2n) { /*参数2n代表每逢第2n个li*/
+	background: #f7f7f7;
+}
+
+li span {
+	background: #e74c3c;
+	height: 40px;
+	width: 0;
+	margin-right: 20px;
+	text-align: center;
+	color: white;
+	display: inline-block; /*让这个span元素在它的上级容器里面填充满*/
+	transition: 0.2s linear; /*liner代表匀速，此外还有几种变速的参数*/
+	opacity: 0; /*如果不设置透明度为0，那么即使宽度为0时，图标其实还是能看见的*/
+}
+
+li:hover span {
+	width: 40px;
+	opacity: 1.0;
+}
+
+input {
+	font-size: 18px;
+	color: #2980b9;
+	background: #f7f7f7;
+	width: 100%;
+	padding: 13px 13px 13px 20px;
+	box-sizing: border-box; /*如果不加这个语句，input框加上padding实际上超出了它所在的容器*/
+	border: 3px solid rgba(0, 0, 0, 0); /*如果不加这个border，文本框外圈在获取焦点前有缝隙*/
+}
+
+input:focus {
+	background: #fff;
+	border: 3px solid #2980b9;
+	outline: none;
+}
+
+.fa-plus {
+	float: right;
+}
+
+#container {
+	width: 360px;
+	margin: 100px auto;
+	background: #f7f7f7;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /*边框阴影效果*/
+}
+
+.completed {
+	text-decoration: line-through;
+	color: gray;
+}
