@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do List</title>
+	<link rel="stylesheet" type="text/css" href="toDoList.css">
+	<script type="text/javascript" src="assets/js/lib/jquery-3.3.1.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,700,500">
+</head>
+<body>
+	<div id="container">
+		<h1>TO-DO LIST <span id="toggle-form"><i class="fa fa-plus"></i></span></h1> <!-- 在fontawesome5里面，i元素图标需要嵌套在span里面 -->
+		<input type="text" placeholder="Add New Todo">
+		<ul>
+			<li><span><i class="fas fa-trash-alt"></i></span> Buy Robes</li>
+			<li><span><i class="fas fa-trash-alt"></i></span> Fight Maltoy</li>
+		</ul>
+	</div>
+  <script type="text/javascript" src="toDoList.js"></script>
+</body>
+</html>
