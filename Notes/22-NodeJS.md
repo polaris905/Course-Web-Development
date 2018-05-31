@@ -2,8 +2,6 @@
   + [NodeJS官网](https://nodejs.org)
   + [开发技术对比网站](https://stackshare.io/)
   + [npm官网](https://www.npmjs.com)
-  + [可以查找很多技术问答的网站](https://stackoverflow.com/search?q=framework+library)
-  + [express官网](http://www.expressjs.com)
 + 二个问题
   + 什么是Node  
     能够使javascript运行于后端服务器
