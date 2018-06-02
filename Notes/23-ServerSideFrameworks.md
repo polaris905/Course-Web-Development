@@ -5,7 +5,7 @@
 + package.json
   + npm init 生成一个新的package.json
   + npm install XXX --save save参数是将安装的这个package名字和版本号
-+ 新建一个app.js
++ 基本操作
 ```js
 var express = require("express");
 var app = express();
@@ -34,5 +34,43 @@ app.get("/r/:subredditName", function(req, res) {
 // 这条语句的用法还需要再了解
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started");
+});
+```
++ 一个小练习
+```js
+var express = require("express");
+var app = express();
+
+app.get("/", function(req, res) {
+    res.send("Hi there, welcome to my assignment!");
+});
+
+app.get("/speak/:animal", function(req, res) {
+    var animal = req.params.animal;
+    var sounds = {
+        pig: "Oink",
+        cat: "Meow",
+        dog: "Wolf"
+    }
+    var sound = sounds[animal];
+    res.send(sound);
+});
+
+app.get("/repeat/:word/:num", function(req, res) {
+    var word = req.params.word;
+    var result = "";
+    var num = Number(req.params.num);
+    for (var i = 0; i < num; i++) {
+        result += word + " ";
+    }
+    res.send(result);
+});
+
+app.get("*", function(req, res) {
+    res.send("Sorry!");
+});
+
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("Server has started.");
 });
 ```
