@@ -1,0 +1,31 @@
+<% include partials/header %>
+<!-- container的效果是两边留下了一些空白位置 -->
+<div class="container">
+    <!-- jumbotron的效果看起来就是把这个区域里的h1放置在灰色的框架里 -->
+    <header class="jumbotron">
+        <!-- 加第二个container的作用在于让这里面的文字与jumbotron外框之间也留有空白位置 -->
+        <div class="container">
+            <h1>Welcome To YelpCamp!</h1>
+            <p>View our hand-picked campground from all over the world</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+            </p>
+        </div>
+    </header>
+    <!-- style里面的两个参数是让缩略图规律地排列，具体细节可以挨个测试 -->
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% campgrounds.forEach(function(campground) { %>
+            <div class="col-md-3 col-sm-6">
+                <!-- thumbnail是缩略图，这个指令在bootstrap4中语法有变化 -->
+                <div class="thumbnail">
+                    <img src="<%= campground.image %>">
+                    <div class="caption">
+                        <h4><%= campground.name %></h4>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include partials/footer %>
