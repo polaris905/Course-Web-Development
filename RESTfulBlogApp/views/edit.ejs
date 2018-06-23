@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= blog.title %></div>
+    <!--此处可以回听讲座278的标签部分，这里？部分后面的put，是用来让系统知道app.js里面对应的是哪个route，需要npm install method-method-override-->
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+        <!--此处name的用法参见https://www.udemy.com/the-web-developer-bootcamp/learn/v4/t/lecture/7301876?start=0-->
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="blog[title]" value="<%= blog.title %>">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        <div class="field">
+            <label>Blog Content</label>
+            <!--textarea没有value属性，所以把要显示的内容放在两个tag之间-->
+            <textarea name="blog[body]"><%= blog.body %></textarea>
+        </div>
+        <input class="ui violet big basic button" type="submit">
+    </form>
+</div>
+
+<% include ./partials/footer %>
