@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+
+<!--segment的作用是有一个灰色的框-->
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= blog.image %>">
+            <div class="content">
+                <span><%= blog.created.toDateString() %></span>
+            </div>
+            <div class="description">
+                <!-- 下面的语句中-代替了=，作用为显示内容时将执行里面的html代码，但是要注意script代码注入 -->
+                <p><%- blog.body %></p>
+            </div>
+            <a class="ui red basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+            <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>
